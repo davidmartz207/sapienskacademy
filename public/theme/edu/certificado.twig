@@ -1,0 +1,42 @@
+{% extends 'partials/_consulta.twig' %}
+{% block main %}
+
+    {% setcontent certificados = '(certificado)/search' where { filter: search } %}
+
+
+    {% for certificado in certificados %}
+        {% set estudiante = certificado.related('estudiantes') %}
+        {% set curso = certificado.related('cursos') %}
+
+        {% if certificado.codigo == search %}
+            <div class="page_section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <h1>Verificación de datos</h1>
+                            <div class="text-right">Código: {{ certificado.codigo }}</div>
+                            <div>
+                                <i class="fa fa-user"></i>
+                                Estudiante: {{ estudiante[0]['nombres'] }}  {{ estudiante[0]['apellidos'] }}
+                            </div>
+                            <div>
+                                Identificación: {{ estudiante[0]['identificacion'] }}
+                            </div>
+                            <div>
+                                Dirección: {{ estudiante[0]['direccion'] }}
+                            </div>
+                            <div>
+                                Curso: {{ curso[0]['nombre'] }}
+                            </div>
+                            <div>
+                                Fecha: {{ certificado[0]['fecha']|date("d/m/Y")  }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+
+{% endblock main %}

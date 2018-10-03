@@ -1,0 +1,36 @@
+{% setcontent general = 'general' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ general[1]['titulo']  }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Course Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ include('partials/_head.twig') }}
+</head>
+<body>
+
+<div class="super_container">
+
+
+    <div class="logo_container">
+        <div class="logo">
+            <img style=" width:  300px" src="{{asset('images/logo.png','theme')}}" alt="">
+        </div>
+    </div>
+
+    {% block main %}
+    {% endblock main %}
+
+
+
+    {{ include('partials/_footer.twig') }}
+
+</div>
+
+{{ include('partials/_foot.twig') }}
+
+
+</body>
+</html>

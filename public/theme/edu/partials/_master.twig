@@ -1,0 +1,37 @@
+{% setcontent general = 'general' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ general[1]['titulo'] }}</title>
+    <link rel="icon" href="{{ asset('images/ico.png', 'theme') }}">
+
+    <link rel="apple-touch-icon" href="{{ asset('images/ico.png', 'theme') }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Course Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ include('partials/_head.twig') }}
+</head>
+<body>
+
+<div class="super_container">
+
+
+    {{ include('partials/_header.twig') }}
+
+    {{ include('partials/_menu.twig') }}
+
+    {% block main %}
+    {% endblock main %}
+
+
+
+    {{ include('partials/_footer.twig') }}
+
+</div>
+
+{{ include('partials/_foot.twig') }}
+
+
+</body>
+</html>

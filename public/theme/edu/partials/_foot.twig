@@ -1,0 +1,63 @@
+<script src="{{asset('js/jquery-3.2.1.min.js','theme')}}"></script>
+<script src="{{asset('styles/bootstrap4/popper.js','theme')}}"></script>
+<script src="{{asset('styles/bootstrap4/bootstrap.min.js','theme')}}"></script>
+<script src="{{asset('plugins/greensock/TweenMax.min.js','theme')}}"></script>
+<script src="{{asset('plugins/greensock/TimelineMax.min.js','theme')}}"></script>
+<script src="{{asset('plugins/scrollmagic/ScrollMagic.min.js','theme')}}"></script>
+<script src="{{asset('plugins/greensock/animation.gsap.min.js','theme')}}"></script>
+<script src="{{asset('plugins/greensock/ScrollToPlugin.min.js','theme')}}"></script>
+<script src="{{asset('plugins/OwlCarousel2-2.2.1/owl.carousel.js','theme')}}"></script>
+<script src="{{asset('plugins/scrollTo/jquery.scrollTo.min.js','theme')}}"></script>
+<script src="{{asset('plugins/easing/easing.js','theme')}}"></script>
+<script src="{{asset('js/custom.js','theme')}}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.ui.min.js'></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script src="{{asset('plugins/slick-master/slick/slick.js','theme')}}"></script>
+
+<script>
+    $(".modal").each(function(l){$(this).on("show.bs.modal",function(l){var o=$(this).attr("data-easein");"shake"==o?$(".modal-dialog").velocity("callout."+o):"pulse"==o?$(".modal-dialog").velocity("callout."+o):"tada"==o?$(".modal-dialog").velocity("callout."+o):"flash"==o?$(".modal-dialog").velocity("callout."+o):"bounce"==o?$(".modal-dialog").velocity("callout."+o):"swing"==o?$(".modal-dialog").velocity("callout."+o):$(".modal-dialog").velocity("transition."+o)})});
+</script>
+
+<script>
+    jQuery(document).ready(function(){
+        linkInterno = $('a[href^="#"]');
+        linkInterno.on('click',function(e) {
+            e.preventDefault();
+            var href = $(this).attr('href');
+            $('html, body').animate({ scrollTop : $( href ).offset().top }, 'slow');
+        });
+
+        $('#boton').on('click', function () {
+            if ($('#codigo').val() == "" || $('#codigo').val().length <5  ){
+                alert('Ingrese un código válido') ;
+                return;
+
+            }
+            var win = window.open($(this).data('url')+$('#codigo').val(), '_blank');
+            if (win) {
+                //Browser has allowed it to be opened
+                win.focus();
+            } else {
+                //Browser has blocked it
+                alert('Please allow popups for this website');
+            }
+        });
+
+
+        //otro slider
+
+        $('.owl-carousel').owlCarousel({
+            items:1,
+            lazyLoad:true,
+            loop:true,
+            margin:10,
+            autoplay:true,
+            autoplayTimeout:5000,
+            autoplayHoverPause:false,
+            dots: false
+
+        });
+    });
+</script>

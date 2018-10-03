@@ -1,0 +1,105 @@
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+
+
+        <!-- Footer Content -->
+
+        <div class="footer_content">
+            <div class="row">
+
+                <!-- Footer Column - About -->
+                <div class="col-lg-3 footer_col" style="word-break: break-word">
+
+                    <!-- Logo -->
+                    <div class="logo_container">
+                        <div class="logo">
+                            <img style="width: 100%" class="img img-responsive"
+                                 src="{{ asset('images/logo1.png','theme') }}" alt="">
+                        </div>
+                    </div>
+                    <p class="footer_about_text">{{ general[1]['nosotros'] }}</p>
+
+                </div>
+
+                <!-- Footer Column - Menu -->
+
+                <div class="col-lg-3 footer_col">
+                    <div class="footer_column_title">Menú</div>
+                    <div class="footer_column_content">
+                        <ul>
+                            {{ menu(template = 'partials/_submenu1.twig') }}
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Column - Usefull Links -->
+
+                <div class="col-lg-3 footer_col">
+                    <div class="footer_column_title">Otros links</div>
+                    <div class="footer_column_content">
+                        <ul>
+                            <li class="footer_list_item"><a href="#testimonios">Testimonios</a></li>
+                            <li class="footer_list_item"><a href="#servicios">Servicios</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Column - Contact -->
+
+                <div class="col-lg-3 footer_col" id="contacto">
+                    <div class="footer_column_title">Contact</div>
+                    <div class="footer_column_content">
+                        <ul>
+                            <li class="footer_contact_item">
+                                <div class="footer_contact_icon">
+                                    <img src="{{ asset('images/placeholder.svg','theme') }}" alt="">
+                                </div>
+                                {{ general[1]['direccion'] }}
+                            </li>
+                            <li class="footer_contact_item">
+                                <div class="footer_contact_icon">
+                                    <img src="{{ asset('images/smartphone.svg','theme') }}" alt="">
+                                </div>
+                                {{ general[1]['telefono'] }}
+                            </li>
+                            <li class="footer_contact_item">
+                                <div class="footer_contact_icon">
+                                    <img src="{{ asset('images/envelope.svg','theme') }}" alt="">
+                                </div>
+                                {{ general[1]['correo'] }}
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer Copyright -->
+
+        <div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+            <div class="footer_copyright">
+					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        Sapiens Knowledge Academy C.A. RIF: J-41151220-6. Desarrollado por
+                        <a href="http://www.origamiwebsolutions.com"  target="_blank">
+
+                            Origami Web Solutions</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+            </div>
+            <div class="footer_social ml-sm-auto">
+                <ul class="menu_social">
+                    <li class="menu_social_item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li class="menu_social_item"><a href="https://instagram.com/sapienskacademy"><i class="fab fa-instagram"></i></a></li>
+                    <li class="menu_social_item"><a href="https://www.facebook.com/SapiensKAcademy"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="menu_social_item"><a href="https://twitter.com/sapienskacademy"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</footer>

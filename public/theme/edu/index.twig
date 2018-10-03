@@ -1,0 +1,441 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+    <!-- Home -->
+    {% setcontent banners = 'banner' %}
+    <div class="home" name="inicio" id="inicio">
+        <!-- Hero Slider -->
+        <div class="hero_slider_container">
+            <div class="hero_slider owl-carousel">
+                {% for imagen in banners %}
+
+                    <!-- Hero Slide -->
+                    <div class="hero_slide">
+                        <div class="hero_slide_background"
+                             style="background-image:url({{ absolute_url(asset(imagen.imagen,'files')) }})"></div>
+                        <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
+                            <div class="hero_slide_content text-center">
+                                <h1 data-animation-in="fadeInUp"
+                                    data-animation-out="animate-out fadeOut">{{ imagen.contenido }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="hero_slider_left hero_slider_nav trans_200"><span class="trans_200">Ant</span></div>
+            <div class="hero_slider_right hero_slider_nav trans_200"><span class="trans_200">Prox</span></div>
+        </div>
+    </div>
+
+    <div class="hero_boxes">
+        <div class="hero_boxes_inner">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 hero_box_col">
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <i class="fa fa-book fa-5x" style="color:#FFFFFF; "></i>
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title">Cursos</h2>
+                                <a href="#cursos" class="hero_box_link">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 hero_box_col">
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <i class="fa fa fa-newspaper fa-5x" style="color:#FFFFFF;"></i>
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title">Noticias</h2>
+                                <a href="#noticias" class="hero_box_link">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 hero_box_col">
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <i class="fa fa-check fa-5x" style="color:#FFFFFF;"></i>
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title">Verificaciones</h2>
+                                <a href="#verificaciones" class="hero_box_link">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popular -->
+    {% setcontent cursos = 'curso' %}
+
+    <div class="popular page_section" name="cursos" id="cursos">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>Nuestros Cursos</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row course_boxes">
+
+                <!-- Popular Course Item -->
+                {% for curso in cursos %}
+                    <div style="padding-top: 30px; cursor: pointer" data-toggle="modal"
+                         data-target="#curso{{ curso.id }}" class="col-lg-4 course_box">
+                        <div class="card">
+                            <img class="card-img-top" src="files/{{ curso.imagen }}" alt="">
+                            <div class="card-body text-center">
+                                <div class="card-title"><a href="">{{ curso.nombre }}</a></div>
+                                <div class="card-text">{{ curso.descripcion }}<br></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% for curso in cursos %}
+        <!-- Modal de cursos -->
+        <div class="modal  modal-md" data-easein="flipYIn" id="curso{{ curso.id }}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel"><b>{{ curso.nombre }}</b></h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="word-break: break-word">
+                        <p> {{ curso.descripcion }}</p>
+                        <p> <a target="_blank" href="{{ absolute_url('/public/files/') }}{{ curso.programa }}">Descargar Programa</a>
+                        </p>
+
+                        <br><br> {{ curso.contenido }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+    <!-- Register -->
+    {% setcontent instrucciones = 'instruccion' %}
+
+    <div class="register" name="verificaciones" id="verificaciones">
+        <div class="container-fluid">
+            <div class="row row-eq-height">
+                <div class="col-lg-6 nopadding">
+                    <!-- Register -->
+                    <div class="owl-carousel owl-theme">
+                        {% for instruccion in instrucciones %}
+
+                            <img class="owl-lazy" data-src="files/{{ instruccion.image }}"
+                                 data-src-retina="files/{{ instruccion.image }}">
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+                <div class="col-lg-6 nopadding">
+                    <!-- Search -->
+                    <div class="search_section d-flex flex-column align-items-center justify-content-center">
+                        <div class="search_background"
+                             style="background-image:url({{ absolute_url(asset('images/search_background.jpg','theme')) }})"
+                        ></div>
+                        <div class="search_content text-center">
+                            <h1 class="search_title">Verifica tu información</h1>
+                            <input id="codigo" class="input_field search_form_degree" type="text"
+                                   placeholder="Código">
+                            <button id="boton" data-url="{{ absolute_url('search?q=') }}"
+                                    class="search_submit_button trans_200">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    {% setcontent servicios = 'servicio' %}
+
+    <div class="services page_section" name="servicios" id="servicios">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>Nuestros servicios</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row services_row">
+                {% for servicio in servicios %}
+                    <div data-toggle="modal"
+                         style="padding-top: 30px; cursor: pointer"
+                         data-target="#servicio{{ servicio.id }}"
+                         class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+                        <div class="icon_container d-flex flex-column justify-content-end">
+                            <img src="images/mortarboard.svg" alt="">
+                        </div>
+                        <h3>{{ servicio.nombre }}</h3>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% for servicio in servicios %}
+        <!-- Modal de Noticias -->
+        <div class="modal  modal-md" data-easein="flipYIn" id="servicio{{ servicio.id }}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body ">
+                        <div class="text-center">
+                            <h2>{{ servicio.nombre }}</h2><br>
+                        </div>
+                        <div style="word-break: break-word">
+                            {{ servicio.descripcion }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <!-- Testimonials -->
+    {% setcontent testimonios = 'testimonio' %}
+
+    <div class="testimonials page_section" name="testimonios" id="testimonios">
+        <!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
+        <div class="testimonials_background_container prlx_parent">
+            <div class="testimonials_background prlx"
+                 style="background-image:url({{ absolute_url(asset('images/testimonials_background.jpg','theme')) }})"></div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>Testimonios</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+
+                    <div class="testimonials_slider_container">
+
+                        <!-- Testimonials Slider -->
+                        <div class="owl-carousel owl-theme testimonials_slider">
+
+                            <!-- Testimonials Item -->
+                            {% for testimonio in testimonios %}
+
+                                <div class="owl-item">
+                                    <div class="testimonials_item text-center">
+                                        <div class="quote">“</div>
+                                        <p class="testimonials_text">{{ testimonio.testimonio }}</p>
+                                        <div class="testimonial_user">
+                                            <div class="testimonial_image mx-auto">
+                                                <img src="files/{{ testimonio.imagen }}" alt="">
+                                            </div>
+                                            <div class="testimonial_name">{{ testimonio.nombre }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Events -->
+    {% setcontent noticias = 'noticia' %}
+
+    <div class="events page_section" name="noticias" id="noticias">
+        <div class="container">
+
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>Noticias / Eventos</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event_items">
+
+                <!-- Event Item -->
+                {% for noticia in noticias %}
+
+                    <div class="row event_item" style="cursor: pointer" data-toggle="modal"
+                         data-target="#noticia{{ noticia.id }}">
+                        <div class="col">
+                            <div class="row d-flex flex-row align-items-end">
+
+                                <div class="col-lg-2 order-lg-1 order-2">
+                                    <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                        <div class="event_day">{{ noticia.fecha|date("d") }} </div>
+                                        {% switch noticia.fecha|date("m") %}
+
+                                        {% case "01" %}
+
+                                            <div class="event_month">Enero</div>
+
+                                        {% case "02" %}
+
+                                            <div class="event_month">Febrero</div>
+                                        {% case "03" %}
+
+                                            <div class="event_month">Marzo</div>
+
+                                        {% case "04" %}
+
+                                            <div class="event_month">Abril</div>
+                                        {% case "05" %}
+
+                                            <div class="event_month">Mayo</div>
+
+                                        {% case "06" %}
+
+                                            <div class="event_month">Junio</div>
+                                        {% case "07" %}
+
+                                            <div class="event_month">Julio</div>
+
+                                        {% case "08" %}
+
+                                            <div class="event_month">Agosto</div>
+                                        {% case "09" %}
+
+                                            <div class="event_month">Septiembre</div>
+
+                                        {% case "10" %}
+
+                                            <div class="event_month">Octubre</div>
+                                        {% case "11" %}
+
+                                            <div class="event_month">Noviembre</div>
+
+                                        {% case "12" %}
+
+                                            <div class="event_month">Diciembre</div>
+
+                                        {% default %}
+
+                                            <div class="event_month"></div>
+
+
+                                        {% endswitch %}
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 order-lg-2 order-3">
+                                    <div class="event_content" style="word-break: break-word">
+                                        <div class="event_name"><a class="trans_200" href="#">{{ noticia.titulo }}</a>
+                                        </div>
+                                        <div class="event_location">{{ noticia.lugar }}</div>
+                                        <p>&nbsp;&nbsp;&nbsp;</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 order-lg-3 order-1">
+                                    <div class="event_image">
+                                        <img class="img img-responsive" src="files/{{ noticia.imagen }}" alt="">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Event Item -->
+    {% for noticia in noticias %}
+        <!-- Modal de Noticias -->
+        <div class="modal  modal-md" data-easein="flipYIn" id="noticia{{ noticia.id }}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body ">
+                        <div class="text-center">
+                            <img class="img img-responsive" style="width: 100%" src="files/{{ noticia.imagen }}" alt="">
+                            <h2>{{ noticia.titulo }}</h2><br>
+                            <h3>{{ noticia.lugar }}</h3><br>
+                        </div>
+                        <div style="word-break: break-word">
+                            {{ noticia.contenido }}
+
+                        </div>
+                        <div class="text-right">
+                            {{ noticia.fecha|date("d/m/Y") }}
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    <!-- Popular -->
+    {% setcontent aliados = 'aliado' %}
+
+    <div class="popular page_section" name="cursos" id="cursos">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>Aliados</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row course_boxes">
+
+                <!-- Popular Course Item -->
+                {% for aliado in aliados %}
+                    <div style="padding-top: 30px; cursor: pointer" class="col-lg-2">
+                        <a href="{{ aliado.direccion }}" target="_blank">
+                            <img style="width: 100%"   src="files/{{ aliado.imagen }}" alt="{{ aliado.direccion }}">
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}
+
+

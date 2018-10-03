@@ -1,0 +1,310 @@
+general:
+    name: General
+    singular_name: general
+    fields:
+        titulo:
+            name: Título de la página
+            type: text
+            height: 150px
+        direccion:
+            name: Título de la página
+            type: text
+            height: 150px
+        telefono:
+            name: Título de la página
+            type: text
+            height: 150px
+        correo:
+            name: Título de la página
+            type: text
+            height: 150px
+        nosotros:
+            type: html
+            height: 150px
+        slug:
+            type: slug
+            uses: [id]
+            group: meta
+    viewless: true
+    singleton: true
+    default_status: published
+    icon_many: "fa:home"
+    icon_one: "fa:home"
+
+
+
+estudiantes:
+    name: Estudiantes
+    singular_name: Estudiante
+    fields:
+        identificacion:
+            name: identificacion
+            type: text
+            height: 150px
+        nombres:
+            name: identificacion
+            type: text
+            height: 150px
+        Apellidos:
+            name: identificacion
+            type: text
+            height: 150px
+        direccion:
+            name: Dirección
+            type: text
+            height: 150px
+        telefono:
+            name: teléfono
+            type: text
+            height: 150px
+        correo:
+            name: correo
+            type: text
+            height: 150px
+    icon_many: "fa:user"
+    icon_one: "fa:user"
+    
+banners:
+    name: Banners
+    singular_name: banner
+    plural_name: banners
+    fields:
+        imagen:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png ]
+        contenido:
+            type: text
+            class: large
+        slug:
+            type: slug
+            uses: [ id ]
+            group: meta
+    record_template:  index.twig
+    listing_template: index.twig
+    listing_records: 1
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    icon_many: "fa:image"
+    icon_one: "fa:image"
+    
+cursos:
+    name: Cursos
+    singular_name: curso
+    plural_name: cursos
+    fields:
+        imagen:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png, jpeg ]
+            required: true
+        programa:
+            type: file
+        nombre:
+            type: text
+            class: large
+            required: true
+        descripcion:
+            type: text
+            class: large
+            required: true
+        contenido:
+            type: html
+            height: 150px
+            required: true
+        slug:
+            type: slug
+            uses: [ id ]
+            group: meta
+    record_template:  index.twig
+    listing_template: index.twig
+    listing_records: 1
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    icon_many: "fa:book"
+    icon_one: "fa:book"
+    
+    
+certificados:
+    name: Certificados
+    singular_name: Certificado
+    fields:
+        codigo:
+            name: 
+            type: text
+            height: 150px
+            group: general
+        slug:
+            type: slug
+            uses: [ codigo ]
+            group: meta
+        fecha:
+            type:  date
+            group: general
+    relations:
+        cursos:
+            multiple: false
+            label: Seleccione un curso
+            order: nombre
+        estudiantes:
+            multiple: false
+            label: Seleccione Estudiante
+            order: nombres
+    default_status: published
+    listing_template: certificado.twig
+    listing_records:  certificado.twig
+    icon_many: "fa:graduation-cap"
+    icon_one: "fa:graduation-cap"       
+    
+servicios:
+    name: Servicios
+    singular_name: servicio
+    plural_name: servicios
+    fields:
+        nombre:
+            type: text
+            class: large
+            required: true
+        descripcion:
+            type: text
+            class: large
+            required: true
+        slug:
+            type: slug
+            uses: [ id ]
+            group: meta
+    record_template:  index.twig
+    listing_template: index.twig
+    listing_records: 1
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    icon_many: "fa:cog"
+    icon_one: "fa:gog"
+    
+testimonios:
+    name: Testimonios
+    singular_name: testimonio
+    plural_name: testimonios
+    fields:
+        imagen:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png, jpeg ]
+            required: true
+        nombre:
+            type: text
+            class: large
+            required: true
+        testimonio:
+            type: html
+            height: 150px
+            required: true
+        slug:
+            type: slug
+            uses: [ id ]
+            group: meta
+    record_template:  index.twig
+    listing_template: index.twig
+    listing_records: 1
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    icon_many: "fa:comments"
+    icon_one: "fa:comments"
+
+noticias:
+    name: Noticias
+    singular_name: noticia
+    plural_name: noticias
+    fields:
+        imagen:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png, jpeg ]
+            required: true
+        fecha:
+            type: date
+            type: date
+            variant: inline
+        lugar:
+            type: text
+            class: large
+            required: true
+        titulo:
+            type: text
+            class: large
+            required: true
+        contenido:
+            type: html
+            height: 150px
+            required: true
+        slug:
+            type: slug
+            uses: [ id ]
+            group: meta
+    record_template:  index.twig
+    listing_template: index.twig
+    recordsperpage: 1
+    listing_records: 1
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    icon_many: "fa:file"
+    icon_one: "fa:file"
+
+instrucciones:
+    name: Instrucción
+    singular_name: instrucción
+    plural_name: instrucciones
+    fields:
+        imagen:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png, jpeg ]
+            required: true
+       
+    record_template:  index.twig
+    listing_template: index.twig
+    listing_records: 1
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    icon_many: "fa:pencil"
+    icon_one: "fa:pencil"
+
+aliados:
+    name: Aliados
+    singular_name: aliado
+    plural_name: aliados
+    fields:
+        imagen:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png, jpeg ]
+            required: true
+        nombre:
+            type: text
+            class: large
+            required: true
+        direccion:
+            type: text
+            class: large
+            required: true
+    record_template:  index.twig
+    listing_template: index.twig
+    listing_records: 1
+    show_on_dashboard: true
+    viewless: true
+    default_status: published
+    searchable: false
+    icon_many: "fa:book"
+    icon_one: "fa:book"
